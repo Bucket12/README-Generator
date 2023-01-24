@@ -67,7 +67,7 @@ const questions = [
 function writeToFile(fileName, data) {
     const content = generateMarkdown(data);
 
-fs.writeFileSync(fileName, content, console.log('Your file has been written'))
+fs.writeFileSync(fileName, content, console.log('Congrats! Your README has been created.'))
 }
 
 // TODO: Create a function to initialize app
