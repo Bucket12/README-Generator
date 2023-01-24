@@ -1,19 +1,42 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(data) {
-let license = '';
-switch (data.license) {
-  case 'MIT':
-    license = `[![license: MIT](https://img.shields.io/badge/License/${data.licenses})](https://opensource.org/licenses/MIT)]`
-    break;
-  case 'GNU GPLV3':
-    license = `[![License: GPL v3](https://img.shields.io/badge/License/${data.licenses})](https://www.gnu.org/licenses/gpl-3.0)`
-    break;
-  case `APACHE 2.0`:
-    license = `[![License](https://img.shields.io/badge/License/${data.licenses})](https://opensource.org/licenses/Apache-2.0)`
-    break;
+	let licBadge = ``;
+	let dataBadge = data.licenses
+	
+  if (dataBadge === `MIT`) {
+    licBadge = `https://img.shields.io/badge/License-MIT-yellow.svg`
+    return licBadge
+  } else if (dataBadge === `GNU GPLV3`) {
+    licBadge = `https://img.shields.io/badge/License-GPLv3-blue.svg`
+    return licBadge
+  } else if (dataBadge === `APACHE 2.0`) {
+    licBadge = `https://img.shields.io/badge/License-Apache_2.0-blue.svg`
+    return licBadge
+  } else if (dataBadge === `NONE`) {
+    licBadge = 'https://img.shields.io/badge/license-Unlicense-blue.svg'
+    return licBadge
+  }
 }
-return license;
+
+function renderLicenseLink(data) {
+  let link = ``;
+
+  let dataLicense = data.licenses
+
+  if (dataLicense === `MIT`) {
+    link = `https://opensource.org/licenses/MIT`
+    return link;
+  } else if (dataLicense === `GNU GPLV3`) {
+    link = `https://www.gnu.org/licenses/gpl-3.0`
+    return link;
+  } else if (dataLicense === `APACHE 2.0`) {
+    link = `https://opensource.org/licenses/Apache-2.0`
+    return link;
+  } else if (dataLicense === `NONE`){
+    link = `https://unlicense.org/`
+    return link
+  }
 }
 
 // TODO: Create a function to generate markdown for README
@@ -45,7 +68,7 @@ function generateMarkdown(data) {
   ${data.usage}
 
   ## License:
-  ${renderLicenseBadge(data)}
+  [![License: ${data.licenses}](${renderLicenseBadge(data)})](${renderLicenseLink(data)})
 
   ## Tests:
   ${data.tests}
