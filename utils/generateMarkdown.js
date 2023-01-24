@@ -19,6 +19,7 @@ function renderLicenseBadge(data) {
   }
 }
 
+// TODO: Create a function to link the user to relevant license information.
 function renderLicenseLink(data) {
   let link = ``;
 
